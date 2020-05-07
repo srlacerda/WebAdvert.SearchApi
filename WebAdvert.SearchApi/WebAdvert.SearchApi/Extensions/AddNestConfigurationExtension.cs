@@ -20,7 +20,7 @@ namespace WebAdvert.SearchApi.Extensions
             var connectionSettings = new ConnectionSettings(new Uri(elasticSearchUrl))
                 .DefaultMappingFor<AdvertType>(advert => advert
                 .IdProperty(p => p.Id)
-                .IndexName("adverts")    
+                .IndexName("adverts")
                 .RelationName("advert")
             );
 
