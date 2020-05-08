@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using WebAdvert.SearchApi.Extensions;
+using WebAdvert.SearchApi.HealthChecks;
 using WebAdvert.SearchApi.Services;
 
 namespace WebAdvert.SearchApi
@@ -26,7 +27,11 @@ namespace WebAdvert.SearchApi
             services.AddTransient<ISearchService, SearchService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddHealthChecks();
+            //services.AddHealthChecks(checks =>
+            //{
+            //    checks.AddCheck<SearchHealthCheck>("Search", new TimeSpan(0, 1, 0));
+            //});
+            services.AddHealthChecks().AddCheck<SearchHealthCheck>("Search");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

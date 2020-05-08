@@ -9,5 +9,7 @@ namespace WebAdvert.SearchApi.Services
     public interface ISearchService
     {
         Task<List<AdvertType>> Search(string keyword);
+
+        Task<bool> CheckHealthAsync();
     }
 }

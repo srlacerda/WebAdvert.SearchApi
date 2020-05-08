@@ -16,6 +16,12 @@ namespace WebAdvert.SearchApi.Services
             _client = client;
         }
 
+        public async Task<bool> CheckHealthAsync()
+        {
+            var health = await _client.Cluster.HealthAsync();
+            return health.IsValid == true ? true : false;
+        }
+
         public async Task<List<AdvertType>> Search(string keyword)
         {
             var searchResponse = await _client.SearchAsync<AdvertType>(search => search.
