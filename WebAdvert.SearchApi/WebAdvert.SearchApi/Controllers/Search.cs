@@ -25,6 +25,7 @@ namespace WebAdvert.SearchApi.Controllers
             _logger = logger;
         }
 
+
         [HttpGet]
         [Route("{keyword}")]
         public async Task<List<AdvertType>> Get(string keyword)
